@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rigidbody: {fileID: 943211321}
+  m_speed: 0.3
+  m_hight: 0.3
 --- !u!1 &1215669943
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,8 +430,8 @@ GameObject:
   - component: {fileID: 2002665220}
   - component: {fileID: 2002665219}
   - component: {fileID: 2002665218}
-  m_Layer: 0
-  m_Name: Cube (1)
+  m_Layer: 8
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
