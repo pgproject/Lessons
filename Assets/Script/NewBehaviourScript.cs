@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public bool Direction;
+
     public Rigidbody Rigidbody;
     public float Speed;
     public float HeigthOfJump;
@@ -25,11 +27,13 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Debug.Log("Nacisnałem A");
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.left * Speed);
+            Direction = true;
         }
         if(Input.GetKey(KeyCode.D))
         {
             Debug.Log("Nacisnałem D");
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.right * Speed);
+            Direction = false;
         }
         if(Input.GetKeyDown(KeyCode.Space) && m_isGround)
         {
