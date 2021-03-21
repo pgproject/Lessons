@@ -1,18 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ShowStringOnEndLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Text WinText;
+    public float TimeToWait;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        WinText.enabled = true;
+        StartCoroutine(WaitForWin());
+    }
+    private IEnumerator WaitForWin()
+    {
+        yield return new WaitForSeconds(TimeToWait);
+        SceneManager.LoadScene("SampleScene");
     }
 }
