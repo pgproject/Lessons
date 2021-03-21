@@ -18,5 +18,7 @@ public class Shooting : MonoBehaviour
         {
             Instantiate(m_bullet, new Vector3(m_player.position.x + 1f * (m_controllPlayer.Direction ? -1 : 1), m_player.position.y + 0.5f, m_player.position.z), m_player.rotation);
         }
+
+
     }
 }
