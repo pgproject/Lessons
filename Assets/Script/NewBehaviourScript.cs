@@ -13,8 +13,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     private float m_speedHelp;
     private bool m_isGround;
-    
+    private int m_skill = 0;
 
+    public int Skill => m_skill;
+    
     void Start()
     {
         m_speedHelp = Speed;
@@ -60,5 +62,10 @@ public class NewBehaviourScript : MonoBehaviour
             m_isGround = false;
             Debug.Log("Skoczyłem");
         }
+    }
+
+    public void UpgradePlayer()
+    {
+        
     }
 }

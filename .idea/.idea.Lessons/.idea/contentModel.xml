@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\MOS_LENOVO_REGINA\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\MOS_LENOVO_REGINA\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Lessons.1660272737.00" t="ExcludeRecursive" />
+    <e p="C:\Users\MOS_LENOVO_REGINA\Documents\Lessons" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Script" t="Include">
+          <e p="Bullet.cs" t="Include" />
+          <e p="Enemy.cs" t="Include" />
+          <e p="Flag.cs" t="Include" />
+          <e p="IDamage.cs" t="Include" />
+          <e p="NewBehaviourScript.cs" t="Include" />
+          <e p="Shooting.cs" t="Include" />
+          <e p="ShowStringOnEndLevel.cs" t="Include" />
+          <e p="Skill.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Lessons.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private float m_distanceToDestroy;
     [SerializeField] private float m_timeToDestroy;
-
+    [SerializeField] private int m_danage;
 
     private float m_distanceTraveled;
     void Update()
@@ -24,5 +25,10 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(m_timeToDestroy);
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+       other.gameObject.GetComponent<IDamage>()?.Damage(m_danage);
     }
 }
