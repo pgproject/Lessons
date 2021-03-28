@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 943211322}
   - component: {fileID: 943211321}
   - component: {fileID: 943211326}
+  - component: {fileID: 943211327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -428,6 +429,21 @@ MonoBehaviour:
   Speed: 0.3
   HeigthOfJump: 2
   SpeedInAir: 3
+--- !u!114 &943211327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943211320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a467a4e220d2a4d4daf1cbc212a28d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bullet: {fileID: 1489309582019911681, guid: 76dea6bc1be9b52439009b89661f9cac,
+    type: 3}
+  m_playerTransform: {fileID: 943211325}
 --- !u!1 &1003096684
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +693,7 @@ GameObject:
   - component: {fileID: 1946936625}
   - component: {fileID: 1946936624}
   - component: {fileID: 1946936628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
