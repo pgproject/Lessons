@@ -8,7 +8,7 @@ public class ShowStringOnEndLevel : MonoBehaviour
 {
     [SerializeField] private Text m_winText;
     [SerializeField] private float m_waitingTime;
-
+    [SerializeField] private string m_levelName;
     private void OnTriggerEnter(Collider other)
     {
         m_winText.enabled = true;
@@ -17,6 +17,6 @@ public class ShowStringOnEndLevel : MonoBehaviour
     private IEnumerator WaitWithLoadScene()
     {
         yield return new WaitForSeconds(m_waitingTime);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(m_levelName);
     }
 }
