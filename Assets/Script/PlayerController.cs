@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private float m_speedHelp;
     private bool m_isGround;
-    
+    [SerializeField] private PlayerInput m_inputAction;
 
     void Start()
     {
@@ -21,20 +22,17 @@ public class PlayerController : MonoBehaviour
    
     void Update()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(m_inputAction.currentActionMap["MoveLeft"].ReadValue<float>() > 0)
         {
-            Debug.Log("Nacisnałem A");
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.left * Speed);
         }
-        if(Input.GetKey(KeyCode.D))
+        if(m_inputAction.currentActionMap["MoveRight"].ReadValue<float>() > 0)
         {
-            Debug.Log("Nacisnałem D");
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.right * Speed);
         }
-        if(Input.GetKeyDown(KeyCode.Space) && m_isGround)
+        if(m_inputAction.currentActionMap["Jump"].triggered && m_isGround)
         {
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.up * HeigthOfJump);
-            Debug.Log("Odcisnałem W");
         }
     }
 
@@ -54,7 +52,6 @@ public class PlayerController : MonoBehaviour
         {
             Speed /= SpeedInAir;
             m_isGround = false;
-            Debug.Log("Skoczyłem");
         }
     }
 }
