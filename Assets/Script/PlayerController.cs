@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Script.InteractableObject;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,11 +16,12 @@ public class PlayerController : MonoBehaviour
     private bool m_isGround;
     [SerializeField] private PlayerInput m_inputAction;
 
+    public IInteractable InteractableObject { get; set; }
+    
     void Start()
     {
         m_speedHelp = Speed;
     }
-
    
     void Update()
     {
@@ -34,6 +37,11 @@ public class PlayerController : MonoBehaviour
         {
             Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.up * HeigthOfJump);
         }
+        if (m_inputAction.currentActionMap["Interact"].triggered)
+        {
+            Debug.Log(InteractableObject);
+            InteractableObject?.Interactable();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,7 +50,6 @@ public class PlayerController : MonoBehaviour
         {
             Speed = m_speedHelp;
             m_isGround = true;
-            Debug.Log("Spadłem na ziemię");
         }
     }
 
@@ -52,6 +59,14 @@ public class PlayerController : MonoBehaviour
         {
             Speed /= SpeedInAir;
             m_isGround = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<IInteractable>() != null)
+        {
+            
         }
     }
 }

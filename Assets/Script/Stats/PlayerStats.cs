@@ -1,42 +1,29 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[Serializable]
-public class PlayerStats
+namespace Script.Stats
 {
-    [SerializeField] private int m_hp;
-
-    public int Hp => m_hp;
-
-
-    [SerializeField] private int m_maxHp;
+    [Serializable, CreateAssetMenu(fileName = "Player Data", menuName = "GeneralStats/PlayerStats", order = 1)]
+    public class PlayerStats : ScriptableObject
+    {
+        [SerializeField] private int m_startHp;
+        public int StartHp => m_startHp;
+        
+        [SerializeField] private int m_hp;
+        public int Hp => m_hp;
     
-    public int MaxHp
-    {
-        get;
-        set;
-    }
-
-    [SerializeField] private int m_damage;
-    public int Damage => m_damage;
-     
+        [SerializeField] private int m_maxHp;
+        public int MaxHp => m_maxHp;
     
-    private void OnGUI()
-    {
-        MaxHp = EditorGUILayout.IntField("Max Hp", MaxHp);
+        [SerializeField] private int m_damage;
+        public int Damage => m_damage;
+    
+        public void OnGUI()
+        {
+            m_startHp = EditorGUILayout.IntField("Start Hp", m_startHp);
+            m_maxHp = EditorGUILayout.IntField("Max Hp", MaxHp);
+            m_damage = EditorGUILayout.IntField("Damage", m_damage);
+        }
     }
-    /*
-    [MenuItem("Stats/Player Stats")]
-    static void Init()
-    {
-        PlayerStats window = (PlayerStats) GetWindow(typeof(PlayerStats));
-        window.Show();
-    }
-    private void OnGUI()
-    {
-        m_maxHp = EditorGUILayout.IntField("Max Hp", m_maxHp);
-    }*/
 }
