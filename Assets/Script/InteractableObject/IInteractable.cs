@@ -2,9 +2,11 @@
 {
     public interface IInteractable
     {
-        void Interactable();
+        void Interact();
         bool CanInteract();
 
         IInteractable ReturnObject();
+
+        bool InteractWithButton();
     }
 }

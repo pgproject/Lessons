@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 public class PlantObject : InteractableObject
 {
     [SerializeField] private string m_sceneToLoad;
-    public override void Interactable()
+    public override void Interact()
     {
-        Debug.Log("1234");
         if (CanInteract())
             SceneManager.LoadSceneAsync(m_sceneToLoad);
     }
 
     public override bool CanInteract()
+    {
+        return true;
+    }
+
+    public override bool InteractWithButton()
     {
         return true;
     }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Script.InteractableObject;
+﻿using Script.InteractableObject;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody Rigidbody;
+    [SerializeField] private Rigidbody m_rigidbody;
+    
     public float Speed;
     public float HeigthOfJump;
     public float SpeedInAir;
@@ -16,6 +14,18 @@ public class PlayerController : MonoBehaviour
     private bool m_isGround;
     [SerializeField] private PlayerInput m_inputAction;
 
+
+    private bool m_InteractWithButton
+    {
+        get
+        {
+            if (InteractableObject != null)
+                return InteractableObject.InteractWithButton();
+            
+            return false;
+        }
+        
+    }
     public IInteractable InteractableObject { get; set; }
     
     void Start()
@@ -27,20 +37,19 @@ public class PlayerController : MonoBehaviour
     {
         if(m_inputAction.currentActionMap["MoveLeft"].ReadValue<float>() > 0)
         {
-            Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.left * Speed);
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + Vector3.left * Speed);
         }
         if(m_inputAction.currentActionMap["MoveRight"].ReadValue<float>() > 0)
         {
-            Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.right * Speed);
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + Vector3.right * Speed);
         }
         if(m_inputAction.currentActionMap["Jump"].triggered && m_isGround)
         {
-            Rigidbody.MovePosition(Rigidbody.transform.position + Vector3.up * HeigthOfJump);
+            m_rigidbody.MovePosition(m_rigidbody.transform.position + Vector3.up * HeigthOfJump);
         }
-        if (m_inputAction.currentActionMap["Interact"].triggered)
+        if (m_inputAction.currentActionMap["Interact"].triggered && m_InteractWithButton)
         {
-            Debug.Log(InteractableObject);
-            InteractableObject?.Interactable();
+            InteractableObject?.Interact();
         }
     }
 
@@ -59,14 +68,6 @@ public class PlayerController : MonoBehaviour
         {
             Speed /= SpeedInAir;
             m_isGround = false;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<IInteractable>() != null)
-        {
-            
         }
     }
 }

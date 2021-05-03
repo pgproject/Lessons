@@ -21,9 +21,8 @@ public class InteractableMenager : MonoBehaviour
 
         m_playerController.InteractableObject = m_interactable[0];
         
-        
-        Debug.Log(m_interactable.Any());
-        Debug.Log(m_interactable[0]);
+        if (!m_interactable[0].InteractWithButton())
+            m_interactable[0].Interact();
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,4 +40,6 @@ public class InteractableMenager : MonoBehaviour
 
         Debug.Log(m_interactable.Any());
     }
+    
+    
 }

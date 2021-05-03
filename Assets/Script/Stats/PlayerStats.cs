@@ -22,8 +22,14 @@ namespace Script.Stats
         public void OnGUI()
         {
             m_startHp = EditorGUILayout.IntField("Start Hp", m_startHp);
-            m_maxHp = EditorGUILayout.IntField("Max Hp", MaxHp);
+            m_maxHp = EditorGUILayout.IntField("Max Hp", m_maxHp);
+            m_hp = EditorGUILayout.IntField("Hp", m_hp);
             m_damage = EditorGUILayout.IntField("Damage", m_damage);
+        }
+
+        public void AddHealth(int addHealth)
+        {
+            m_hp = Mathf.Clamp(m_hp + addHealth, m_hp, m_maxHp);
         }
     }
 }
